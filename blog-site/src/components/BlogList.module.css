@@ -1,0 +1,9 @@
+.BlogList-list {
+  list-style: none;
+  background-color: rgb(132, 132, 199);
+  padding: 10px;
+  width: 100%;
+  margin: 10px;
+  border-radius: 20px;
+  color: white;
+}

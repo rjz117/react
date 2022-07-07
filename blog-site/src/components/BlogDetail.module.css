@@ -1,0 +1,11 @@
+.container {
+    background-color: whitesmoke;
+    display: block;
+    padding: 50px;
+}
+
+.container img {
+    height: 250px;
+    width: 500px;
+    
+}

@@ -1,0 +1,109 @@
+.BlogList-list {
+    list-style: none;
+    background-color: rgb(132, 132, 199);
+    padding: 10px;
+    width: 100%;
+    padding: 0 20px;
+    border-radius: 20px;
+  }
+  
+  .header {
+    width: 80%;
+    height: 5rem;
+    background-color: #044599;
+    padding: 0 10%;
+    display: flex;
+    height: 100%;
+  }
+  
+  .navbar {
+    height: 100%;
+  }
+  
+  .header ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    padding: 0 10px;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .header li {
+    margin: 0 1rem;
+  }
+  
+  .header a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .header a:hover,
+  .header a:active,
+  .header a.active {
+    color: #95bcf0;
+    padding-bottom: 0.25rem;
+    border-bottom: 4px solid #95bcf0;
+  }
+  
+  
+  .btn {
+    background-color: teal;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .header a {
+    padding: 10px;
+    margin : auto 15px;
+  }
+  
+  .blogbtn {
+    text-decoration: none;
+    background-color: teal;
+    color: white;
+    border-radius: 4px;
+    border: 1px solid teal;
+    cursor: pointer;
+    justify-content: center;
+    padding: 10px;
+    margin: auto;
+  }
+  
+  .bloglist{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .main {
+    height: 100%;
+    padding: 100px;
+    text-align: center;
+  }
+  
+  .main h1{
+    margin: 80px;
+  }
+  
+  .footer {
+    background-color: red;
+    height: 50px;
+    width: 100%;
+  }
+  
+  .BlogList{
+    background-color: rgb(132, 132, 199);
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    padding-right: 10px;
+    margin: 20px;
+  }
+
+  .mytable {
+    width: 200px;
+  }
