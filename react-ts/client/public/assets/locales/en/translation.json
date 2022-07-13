@@ -1,0 +1,18 @@
+{
+  "app_title": "React App",
+  "login": "Login",
+  "logout": "Logout",
+  "language": "Language",
+  "welcome_message": "Welcome",
+  "days_since_release": "it's been {{number_of_days}} days since this video was released",
+  "search": "Search",
+  "homepage": "Homepage",
+  "manage": "Manage",
+  "dashboard": "Dashboard",
+  "sidebar": "SideBar",
+  "admin": "Admin",
+  "regular": "Regular",
+  "Home": "Home",
+  "Name_must_not_be_empty": "Name must not be empty.",
+  "Password_is_envalid": "Password is envalid"
+}
