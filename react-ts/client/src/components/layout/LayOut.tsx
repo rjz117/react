@@ -5,8 +5,9 @@ import Manage from "../menus/Manage";
 import Dashboard from "../menus/Dashboard";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Homepage from "../Homepage";
-import classes from './Layout.module.css'
+import classes from "./Layout.module.css";
 import NotFound from "../NotFound";
+import Authrization from "../auth/Authrization";
 
 const LayOut = () => {
   return (
@@ -15,10 +16,17 @@ const LayOut = () => {
       <div className={classes.main}>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/manage" element={<Manage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/*" element={<NotFound/>} />
+          <Route element={<Authrization allowedRoles={["admin", "regular"]} />}>
+            <Route path="/search" element={<Search />} />
+          </Route>
+          <Route element={<Authrization allowedRoles={["admin"]} />}>
+            <Route path="/manage" element={<Manage />} />
+          </Route>
+          <Route element={<Authrization allowedRoles={["admin", "regular"]} />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+          <Route path="/unauthorized" element={<NotFound />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
     </Fragment>

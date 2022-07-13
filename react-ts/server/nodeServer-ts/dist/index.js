@@ -37,7 +37,6 @@ const start = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 const authentication = (req, res, next) => {
     let authheader = req.headers.authorization;
-    console.log(req.headers);
     if (!authheader) {
         let err = new Error("You are not authenticated!");
         res.setHeader("WWW-Authenticate", "Basic");
