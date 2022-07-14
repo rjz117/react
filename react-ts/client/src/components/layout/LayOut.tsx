@@ -3,11 +3,12 @@ import SideBar from "../sidebar/SideBar";
 import Search from "../menus/Search";
 import Manage from "../menus/Manage";
 import Dashboard from "../menus/Dashboard";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Homepage from "../Homepage";
 import classes from "./Layout.module.css";
 import NotFound from "../NotFound";
 import Authrization from "../auth/Authrization";
+import Unauthorized from "../Unauthorized";
 
 const LayOut = () => {
   return (
@@ -25,7 +26,7 @@ const LayOut = () => {
           <Route element={<Authrization allowedRoles={["admin", "regular"]} />}>
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
-          <Route path="/unauthorized" element={<NotFound />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>

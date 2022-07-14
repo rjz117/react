@@ -1,10 +1,9 @@
 import "./App.css";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AuthForm from "./components/auth/AuthForm";
 import { userContext } from "./context/user-context";
 import { Fragment, useContext, useCallback, useEffect, useState } from "react";
 import LayOut from "./components/layout/LayOut";
-import LanguageChange from "./components/LanguageChange/LanguageChange";
 import check from "./services/check";
 import NotFound from './components/NotFound';
 
@@ -17,7 +16,7 @@ type CheckResponse = {
 function App() {
   const userCtx = useContext(userContext);
   const login = userCtx.isLoggedIn;
-  const [user, setUser] = useState<boolean>(false);
+  const [,setUser] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   const log = useCallback(async () => {
@@ -29,7 +28,7 @@ function App() {
     } else {
       return false;
     }
-  }, []);
+  }, [userCtx]);
 
   useEffect(() => {
     const checking = async () => {

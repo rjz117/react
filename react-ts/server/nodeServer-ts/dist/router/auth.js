@@ -16,12 +16,18 @@ exports.authRouter = void 0;
 const router = require("express").Router();
 exports.authRouter = router;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const userSchema_1 = require("../schema/userSchema");
+const userSchema_1 = require("../model/userSchema");
 require("dotenv").config();
 router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const allUser = yield userSchema_1.userModel.findOne(req.body).exec();
         const myUser = allUser;
+        if (allUser === null) {
+            return res.json({
+                status: "fail",
+                msg: "authentication failed",
+            });
+        }
         const username = myUser === null || myUser === void 0 ? void 0 : myUser.username;
         const accessToken = jsonwebtoken_1.default.sign({ username }, "Raviraj", {
             expiresIn: "100s",
@@ -41,13 +47,11 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 }));
 router.post("/coockie", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.body);
     const token = req.body.tkn;
-    console.log(token);
     jsonwebtoken_1.default.verify(token, "Raviraj", (err, decodedToken) => __awaiter(void 0, void 0, void 0, function* () {
         if (err) {
-            console.log({ status: 'failed', msg: err.message });
-            res.json({ status: 'failed', msg: err.message });
+            console.log({ status: "failed", msg: err.message });
+            res.json({ status: "failed", msg: err.message });
         }
         else {
             const tokn = decodedToken;

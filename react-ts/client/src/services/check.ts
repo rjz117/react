@@ -21,11 +21,8 @@ const check: () => Promise<Err | CheckResponse> = async () => {
   const data = resData.data as Err | CheckResponse;
   if (data.status === 'fail') {
     console.log("error");
-    return data;
   }
-  else {
-    return data;
-  }
+  return data;
 };
 
 export default check;

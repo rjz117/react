@@ -24,3 +24,13 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+.active {
+    color: rgb(30, 30, 161);
+}
+
+.link {
+    /* background-color: rgb(160, 89, 89); */
+    text-decoration:none;
+}
+

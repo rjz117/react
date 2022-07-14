@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -9,7 +9,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./i18n/config";
 import interceptor from "./services/interceptor";
-import check from './services/check'
 import LanguageChange from './components/LanguageChange/LanguageChange'
 
 interceptor();

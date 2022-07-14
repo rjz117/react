@@ -5,8 +5,8 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 const app = express();
 import { Buffer } from 'buffer';
-import {menuRouter } from './router/menu';
-import {authRouter } from './router/auth';
+import {menuRouter } from './router/menuRouter';
+import {authRouter } from './router/authRouter';
 
 import cors from "cors";
 
@@ -40,6 +40,7 @@ const authentication = (req:Request, res:Response, next:NextFunction) => {
     return next(err);
   }
 
+  console.log(authheader);  
   let auth = new Buffer(authheader.split(" ")[1], "base64")
     .toString()
     .split(":");

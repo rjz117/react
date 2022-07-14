@@ -7,10 +7,10 @@ import React, {
 } from "react";
 import classes from "./SideBar.module.css";
 import { userContext } from "../../context/user-context";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getMenusData } from "../../services/Menus";
 import Cookies from "js-cookie";
+import { NavLink } from "react-router-dom";
 
 type userMenus = {
   _id: string;
@@ -39,16 +39,21 @@ const SideBar = () => {
   } else {
     mn = myMenus.map((menu) => {
       return (
-        <Link to={`./${menu.name}`} key={menu._id}>
+        <NavLink
+          to={`./${menu.name}`}
+          key={menu._id}
+          style={{ textDecoration: 'none' }}
+          className={(navData) => (navData.isActive ? `${classes.active}` : "")}
+        >
           <h3 key={`${menu._id}h3`}>{t(`${menu.name}`)}</h3>
-        </Link>
+        </NavLink>
       );
     });
   }
 
   const logoutHandler = () => {
     userCtx.logout();
-    Cookies.remove('auth')
+    Cookies.remove("auth");
   };
 
   return (
