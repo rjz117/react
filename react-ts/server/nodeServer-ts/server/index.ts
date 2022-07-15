@@ -1,22 +1,12 @@
-
-import express, {NextFunction, Request, Response} from 'express';
-import cookieParser = require("cookie-parser")
+import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-const app = express();
-import { Buffer } from 'buffer';
-import {menuRouter } from './router/menuRouter';
-import {authRouter } from './router/authRouter';
-
+import cookieParser from "cookie-parser";
 import cors from "cors";
-
-
-
-app.use(express.json());
-app.use(cors());
-
-app.use(bodyParser());
-app.use(cookieParser());
+import { menuRouter } from "./router/menuRouter";
+import { authRouter } from "./router/authRouter";
+import { dataRouter } from "./router/dataRouter";
+import {basicAuthRouter} from './router/basicAuthRouter';
 
 const start = async () => {
   try {
@@ -30,37 +20,16 @@ const start = async () => {
   }
 };
 
-const authentication = (req:Request, res:Response, next:NextFunction) => {
-  let authheader = req.headers.authorization;
+const app = express();
 
-  if (!authheader) {
-    let err = new Error("You are not authenticated!");
-    res.setHeader("WWW-Authenticate", "Basic");
-    res.status(401);
-    return next(err);
-  }
+app.use(express.json());
+app.use(cors());
+app.use(bodyParser());
+app.use(cookieParser());
 
-  console.log(authheader);  
-  let auth = new Buffer(authheader.split(" ")[1], "base64")
-    .toString()
-    .split(":");
-  let user = auth[0];
-  let pass = auth[1];
-
-  if (user == "admin" && pass == "password") {
-    return res.send('done')
-  } else {
-    let err = new Error("You are not authenticated!");
-    res.setHeader("WWW-Authenticate", "Basic");
-    res.status(401);
-    return next(err);
-  }
-};
-
-
-// First step is the authentication of the client
-// app.use(authentication)
-
-start();
 app.use("/auth", authRouter);
 app.use("/menu", menuRouter);
+app.use("/data", dataRouter);
+app.use("/basicauth", basicAuthRouter)
+
+start();

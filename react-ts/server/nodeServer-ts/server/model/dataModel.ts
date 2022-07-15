@@ -12,7 +12,7 @@ const dataSchema = new Schema<Data>({
   id: { type: Number },
   title: { type: String },
   body: { type: String },
-});
+},{ collection : 'userData' });
 
-const dataModel = mongoose.model<Data>("data", dataSchema);
+const dataModel = mongoose.model("data", dataSchema);
 export { dataModel };

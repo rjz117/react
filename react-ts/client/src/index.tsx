@@ -9,23 +9,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./i18n/config";
 import interceptor from "./services/interceptor";
-import LanguageChange from './components/LanguageChange/LanguageChange'
+import LanguageChange from "./components/LanguageChange/LanguageChange";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 interceptor();
 
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <UserCotextProvider>
+  <QueryClientProvider client={queryClient}>
+    <UserCotextProvider>
       <BrowserRouter>
-        <React.StrictMode>
-          <LanguageChange/>
+          <LanguageChange />
           <App />
-        </React.StrictMode>
       </BrowserRouter>
-  </UserCotextProvider>
+    </UserCotextProvider>
+  </QueryClientProvider>
 );
 
 reportWebVitals();

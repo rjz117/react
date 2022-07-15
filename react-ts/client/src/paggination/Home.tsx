@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Page from "./Page";
 import Pagination from "./Pagination";
 import getPageData from "../services/getPageData";
+import {useTranslation} from 'react-i18next'
 
 type Post = {
   userId: string;
@@ -15,6 +16,8 @@ const Home = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [postsPerPage] = useState<number>(10);
+
+  const {t} = useTranslation()
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -36,7 +39,7 @@ const Home = () => {
 
   return (
     <div >
-      <h1 className="text-primary mb-3">Data </h1>
+      <h1 className="text-primary mb-3">{t('data')}</h1>
       <Page posts={currentPosts} loading={loading} />
       <Pagination
         postsPerPage={postsPerPage}

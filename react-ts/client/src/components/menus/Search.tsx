@@ -55,8 +55,8 @@ const Search = () => {
               return <li key={post.id}>{post.title}</li>;
             })}
           </ul>
-          <button onClick={previousHandler} disabled={!previous}>previous</button>
-          <button onClick={nextHandler} disabled={!next}>next</button>
+          <button onClick={previousHandler} disabled={!previous}>{t('previous')}</button>
+          <button onClick={nextHandler} disabled={!next}>{t('next')}</button>
         </div>
       </Fragment>
     );

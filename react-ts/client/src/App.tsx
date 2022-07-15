@@ -4,8 +4,8 @@ import AuthForm from "./components/auth/AuthForm";
 import { userContext } from "./context/user-context";
 import { Fragment, useContext, useCallback, useEffect, useState } from "react";
 import LayOut from "./components/layout/LayOut";
-import check from "./services/check";
-import NotFound from './components/NotFound';
+import checkCookie from "./services/checkCookie";
+import NotFound from "./components/NotFound";
 
 type CheckResponse = {
   status: string;
@@ -16,11 +16,11 @@ type CheckResponse = {
 function App() {
   const userCtx = useContext(userContext);
   const login = userCtx.isLoggedIn;
-  const [,setUser] = useState<boolean>(false);
+  const [, setUser] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   const log = useCallback(async () => {
-    const c = await check();
+    const c = await checkCookie();
     if (c.status === "success") {
       const res = c as CheckResponse;
       userCtx.login(res.role);
@@ -33,8 +33,12 @@ function App() {
   useEffect(() => {
     const checking = async () => {
       setLoading(true);
-      const res = await log();
-      setUser(res);
+      try {
+        const res = await log();
+        setUser(res);
+      } catch (error) {
+        console.log(error);
+      }
       setLoading(false);
     };
     checking();

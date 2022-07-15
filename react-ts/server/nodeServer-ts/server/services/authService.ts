@@ -50,7 +50,6 @@ const checkCookie = async (req: Request, res: Response) => {
       const uname = { username: tokn.username };
       const usr = await userModel.findOne(uname).exec();
       const myUser = usr?.toJSON() as User;
-      console.log(usr);
       res.json({
         status: "success",
         username: myUser.username,

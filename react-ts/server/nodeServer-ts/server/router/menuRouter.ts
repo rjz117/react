@@ -1,9 +1,7 @@
 import express from "express";
-import { getMenuData, getPosts } from "../services/menuService";
+import { getMenuData } from "../services/menuService";
 
 const router = express.Router();
-
-router.get("/posts", getPosts);
 
 router.get("/:role", getMenuData);
 

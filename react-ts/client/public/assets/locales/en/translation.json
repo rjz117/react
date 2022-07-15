@@ -14,5 +14,8 @@
   "regular": "Regular",
   "Home": "Home",
   "Name_must_not_be_empty": "Name must not be empty.",
-  "Password_is_envalid": "Password is envalid"
+  "Password_is_envalid": "Password is envalid",
+  "previous":"Previous",
+  "next":"Next",
+  "data":"Data"
 }

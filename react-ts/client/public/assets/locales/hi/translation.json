@@ -12,6 +12,9 @@
   "admin":"एडमेन",
   "regular":"सामान्य",
   "Home":"पीछे जाओ",
-  "Name_must_not_be_emptyapp_title": "नाम खाली नहीं होना चाहिए।",
-  "Password_is_envalid": "पासवर्ड अमान्य है"
+  "Name_must_not_be_empty": "नाम खाली नहीं होना चाहिए।",
+  "Password_is_envalid": "पासवर्ड अमान्य है",
+  "previous":"पिछला",
+  "next":"अगला",
+  "data":"जानकारी"  
 }

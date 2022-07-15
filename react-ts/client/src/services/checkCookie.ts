@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import Cookies from "js-cookie";
+import {Backend} from '../constants';
 
 type Err = {
   status : string,
@@ -11,11 +12,11 @@ type CheckResponse = {
   role: string
 }
 
-const check: () => Promise<Err | CheckResponse> = async () => {
+const checkCookie: () => Promise<Err | CheckResponse> = async () => {
   const tkn = Cookies.get("auth");
 
   const resData = await axios.post<string, AxiosResponse>(
-    "http://localhost:5000/auth/coockie",
+    Backend.URL+"/auth/coockie",
     { tkn }
   );
   const data = resData.data as Err | CheckResponse;
@@ -25,4 +26,4 @@ const check: () => Promise<Err | CheckResponse> = async () => {
   return data;
 };
 
-export default check;
+export default checkCookie;
