@@ -14,7 +14,7 @@ const basicAuthMiddleware = (
     return next(err);
   }
 
-  let auth = new Buffer(authheader.split(" ")[1], "base64")
+  let auth = Buffer.from(authheader.split(" ")[1], "base64")
     .toString()
     .split(":");
   let user = auth[0];

@@ -2,10 +2,6 @@ import { Request, Response } from "express";
 import { userModel } from "../model/userModel";
 import JWT from "jsonwebtoken";
 
-type Token = {
-  auth: string;
-};
-
 type User = {
   username: string;
   password: string;
