@@ -37,7 +37,7 @@ const getPageData = async (): Promise<Post[]> => {
 const getData = async (page:number, limit:number): Promise<Result> => {
   const res: AxiosResponse<Result, null> = await axios.get(
     `${Backend.URL}/data/posts?page=${page}&limit=${limit}`
-  );
+  );  
   return res.data;
 };
 

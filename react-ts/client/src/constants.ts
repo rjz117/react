@@ -1,5 +1,5 @@
 enum Backend {
-    URL = 'http://localhost:5000'
+    URL = 'http://localhost:5000/api'
 }
 
 export {Backend};

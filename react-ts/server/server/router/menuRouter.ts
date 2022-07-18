@@ -1,8 +1,8 @@
 import express from "express";
-import { getMenuData } from "../services/menuService";
+import { getMenus } from "../controller/menuController";
 
 const router = express.Router();
 
-router.get("/:role", getMenuData);
+router.get("/:role", getMenus);
 
 export { router as menuRouter };

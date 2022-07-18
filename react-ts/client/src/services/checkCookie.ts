@@ -19,11 +19,7 @@ const checkCookie: () => Promise<Err | CheckResponse> = async () => {
     Backend.URL+"/auth/coockie",
     { tkn }
   );
-  const data = resData.data as Err | CheckResponse;
-  if (data.status === 'fail') {
-    console.log("error");
-  }
-  return data;
+  return resData.data as Err | CheckResponse;
 };
 
 export default checkCookie;

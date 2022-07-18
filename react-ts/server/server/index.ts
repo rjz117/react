@@ -27,9 +27,9 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
-app.use("/auth", authRouter);
-app.use("/menu", menuRouter);
-app.use("/data", dataRouter);
-app.use("/basicauth", basicAuthRouter)
+app.use("/api/auth", authRouter);
+app.use("/api/menu", menuRouter);
+app.use("/api/data", dataRouter);
+app.use("/api/basicauth", basicAuthRouter)
 
 start();

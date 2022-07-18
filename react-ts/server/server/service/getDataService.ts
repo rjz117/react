@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import { dataModel } from "../model/dataModel";
 
 type next = {
@@ -19,19 +18,19 @@ type Result = {
   results: Data[];
 };
 
-const getAllPostsData = async (req: Request, res: Response) => {
-  const response = await dataModel.find({}).exec();
-  const results = response as Data[];
-  res.json(results);
+const getPostsService: () => Promise<Data[]> = async () => {
+  const response = await dataModel.find<Data>({}).exec();
+  return response;
 };
 
-const getPostsData = async (req: Request, res: Response) => {
-  const page = parseInt(req.query.page! as string);
-  const limit = parseInt(req.query.limit! as string);
+const getPostByPageService: (page: number, limit: number) => Promise<Result> = async (
+  page,
+  limit
+) => {
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const response = await dataModel
-    .find({ id: { $gt: startIndex, $lte: endIndex } })
+    .find<Data>({ id: { $gt: startIndex, $lte: endIndex } })
     .exec();
   const noOfRecords = await dataModel.count().exec();
   let results: Result = {
@@ -59,7 +58,7 @@ const getPostsData = async (req: Request, res: Response) => {
     };
   }
   results.results = response;
-  res.json(results);
+  return results;
 };
 
-export { getPostsData, getAllPostsData };
+export { getPostsService, getPostByPageService };
