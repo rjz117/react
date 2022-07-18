@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import Cookies from "js-cookie";
-import {Backend} from '../constants';
+import {CONSTANTS} from '../constants';
 
 type Err = {
   status : string,
@@ -12,14 +12,18 @@ type CheckResponse = {
   role: string
 }
 
-const checkCookie: () => Promise<Err | CheckResponse> = async () => {
-  const tkn = Cookies.get("auth");
-
-  const resData = await axios.post<string, AxiosResponse>(
-    Backend.URL+"/auth/coockie",
-    { tkn }
-  );
-  return resData.data as Err | CheckResponse;
+const checkCookie: (token:string) => Promise<Err | CheckResponse> = async (token) => {
+  if(token) {
+    const resData = await axios.post<string, AxiosResponse>(
+      CONSTANTS.BASE_URL+"/auth/coockie",
+      { tkn : token }
+    );
+    return resData.data as Err | CheckResponse;
+  }
+  return {
+    status : 'failed',
+    msg : 'coockie not found'
+  }
 };
 
 export default checkCookie;

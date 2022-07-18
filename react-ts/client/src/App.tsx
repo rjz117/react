@@ -6,6 +6,8 @@ import { Fragment, useContext, useCallback, useEffect, useState } from "react";
 import LayOut from "./components/layout/LayOut";
 import checkCookie from "./services/checkCookie";
 import NotFound from "./components/NotFound";
+import Cookies from "js-cookie";
+
 
 type CheckResponse = {
   status: string;
@@ -20,14 +22,18 @@ function App() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const log = useCallback(async () => {
-    const c = await checkCookie();
-    if (c.status === "success") {
-      const res = c as CheckResponse;
-      userCtx.login(res.role);
-      return true;
-    } else {
-      return false;
-    }
+    const cookies = Cookies.get("auth");
+    if(cookies) {
+      console.log(cookies);      
+      const c = await checkCookie(cookies);
+      if (c.status === "success") {
+        const res = c as CheckResponse;
+        userCtx.login(res.role);
+        return true;
+      } else {
+        return false;
+      }
+    }else return false
   }, [userCtx]);
 
   useEffect(() => {

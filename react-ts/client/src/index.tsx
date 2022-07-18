@@ -9,24 +9,19 @@ import "bootstrap/dist/js/bootstrap.js";
 import "./i18n/config";
 import interceptor from "./services/interceptor";
 import LanguageChange from "./components/LanguageChange/LanguageChange";
-import { QueryClient, QueryClientProvider } from "react-query";
 
 interceptor();
-
-const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <QueryClientProvider client={queryClient}>
     <UserCotextProvider>
       <BrowserRouter>
           <LanguageChange />
           <App />
       </BrowserRouter>
     </UserCotextProvider>
-  </QueryClientProvider>
 );
 
 reportWebVitals();

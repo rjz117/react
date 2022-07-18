@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { Backend } from "../constants";
+import { CONSTANTS } from "../constants";
 
 type menus = {
   _id: string;
@@ -11,7 +11,7 @@ const getMenusData: (role: string) => Promise<menus[]> = async (
   role: string
 ) => {
   const resData = await axios.get<string, AxiosResponse>(
-    `${Backend.URL}/menu/${role}`
+    `${CONSTANTS.BASE_URL}/menu/${role}`
   );
   const data: menus[] = resData.data.menus;
   return data;

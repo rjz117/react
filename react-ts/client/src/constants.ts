@@ -1,5 +1,10 @@
-enum Backend {
-    URL = 'http://localhost:5000/api'
+enum CONSTANTS {
+  BASE_URL = "http://localhost:5000/api",
 }
 
-export {Backend};
+enum ROLE {
+  ADMIN = "admin",
+  REGULAR = "regular",
+}
+
+export { CONSTANTS, ROLE };
